@@ -1,5 +1,5 @@
 from models.model import Grupo_Entrada
-from views.main_view import VistaGrupo
+from views.main_view import VistaGrupo, VistaEntrada
 from simple_screen import locate, Screen_manager, Input
 
 
@@ -19,5 +19,8 @@ if __name__ == "__main__":
 
         vg2 = VistaGrupo(otrog, 42, 1)
         vg2.paint()
+        vedad = VistaEntrada("EDAD: ", 1, 10)
 
-        Input()
+        vg.paint()
+        vedad.paint()
+        Input("Pulsa Enter para acabar")
