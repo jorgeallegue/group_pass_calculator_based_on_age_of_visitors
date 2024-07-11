@@ -1,10 +1,10 @@
 from enum import Enum
 
 class TipoEntrada(Enum):
-    BEBE = 0
-    NIÑO = 14
-    ADULTO = 23
-    JUBILADO = 18
+    BEBE = {'P': 0, 'Q': 0}
+    NIÑO = {'P': 14, 'Q': 0}
+    ADULTO = {'P': 23, 'Q': 0}
+    JUBILADO = {'P': 18, 'Q': 0}
 
 class Entrada:
     def __init__(self, edad: int):
@@ -33,10 +33,10 @@ class Grupo_Entrada:
         self.total = 0
         self.num_entradas = 0
         self.tipos_entrada = {
-            TipoEntrada.BEBE: {'P': 0, 'Q': 0},
-            TipoEntrada.NIÑO: {'P': 14, 'Q': 0},
-            TipoEntrada.ADULTO: {'P': 23, 'Q': 0},
-            TipoEntrada.JUBILADO: {'P': 18, 'Q': 0}
+            TipoEntrada.BEBE: {'P': TipoEntrada.BEBE.value['P'], 'Q': 0},
+            TipoEntrada.NIÑO: {'P': TipoEntrada.NIÑO.value['P'], 'Q': 0},
+            TipoEntrada.ADULTO: {'P': TipoEntrada.ADULTO.value['P'], 'Q': 0},
+            TipoEntrada.JUBILADO: {'P': TipoEntrada.JUBILADO.value['P'], 'Q': 0}
         }
 
     def add_entrada(self, edad):
