@@ -1,10 +1,13 @@
 from enum import Enum
+from collections import namedtuple
+
+Datos_Entrada = namedtuple("Datos_Entrada", ("precio", "edad_max"))
 
 class TipoEntrada(Enum):
-    BEBE = (0, 2)
-    NIÑO = (14, 12)
-    ADULTO = (23, 65)
-    JUBILADO = (18, 120)
+    BEBE = Datos_Entrada (0, 2)
+    NIÑO = Datos_Entrada (14, 12)
+    ADULTO = Datos_Entrada (23, 65)
+    JUBILADO = Datos_Entrada (18, 120)
 
 class Entrada:
     def __init__(self, edad: int):
@@ -12,9 +15,9 @@ class Entrada:
         self.__edad = edad
 
         for tipo in TipoEntrada: 
-            if edad <= tipo.value[1]:
+            if edad <= tipo.value.edad_max:
                 self.tipo = tipo
-                self.precio = tipo.value[0]
+                self.precio = tipo.value.precio
                 break 
 
     def __validate_edad(self, edad):
