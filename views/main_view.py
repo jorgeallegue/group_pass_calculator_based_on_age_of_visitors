@@ -12,15 +12,20 @@ class VistaGrupo:
         locate(self.x, self.y, "TIPO             PU     Q       TOTAL")
         locate(self.x, self.y + 1, "=====================================")
         for indice, tipo in enumerate(TipoEntrada):
-            nombre = tipo.name
-            precio_unitario = tipo.value['P']
-            cantidad = self.grupo.cantidad_entradas_por_tipo(tipo)
-            subtotal = self.grupo.subtotal_tipo(tipo)
-            locate(self.x, self.y + 3 + indice, f"{nombre:<14s}{precio_unitario:5.2f}    {cantidad:2d}     {subtotal:7.2f}")
+            locate(self.x, self.y + 3 + indice, f"{tipo.name:.<14s}{tipo.value.precio:5.2f}{self.grupo.cantidad_entradas_por_tipo(tipo):2d}       {self.grupo.subtotal_tipo(tipo):7.2f}")
 
         locate(self.x, self.y + 7, "-------------------------------------")
         locate(self.x, self.y + 8, f"                      {self.grupo.num_entradas:3d}    {self.grupo.total:8.2f}")
 
+class VistaEntrada:
+        def __init__(self, etiqueta: str, x, y):
+             self.etiqueta = etiqueta
+             self.y = y
+             self.x = x
+        
+        def paint(self):
+             locate(self.x, self.y, self.etiqueta)
+             value = Input()
         """
                1         2         3        
       1234567890123456789012345678901234567
