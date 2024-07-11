@@ -1,5 +1,5 @@
 from models.model import Grupo_Entrada, TipoEntrada
-from simple_screen import locate, Print, cls, Screen_manager, Input
+from simple_screen import locate, Screen_manager, Input
 
 class VistaGrupo:
 
@@ -20,26 +20,6 @@ class VistaGrupo:
 
         locate(self.x, self.y + 7, "-------------------------------------")
         locate(self.x, self.y + 8, f"                      {self.grupo.num_entradas:3d}    {self.grupo.total:8.2f}")
-
-if __name__ == "__main__":
-    with Screen_manager:
-        grupo = Grupo_Entrada()
-        grupo.add_entrada(2)
-        grupo.add_entrada(6)
-        grupo.add_entrada(15)
-
-        vg = VistaGrupo(grupo)
-        vg.paint()
-
-        otrog = Grupo_Entrada()
-        otrog.add_entrada(54)
-        otrog.add_entrada(43)
-
-        vg2 = VistaGrupo(otrog, 42, 1)
-        vg2.paint()
-
-        Input()
-
 
         """
                1         2         3        
