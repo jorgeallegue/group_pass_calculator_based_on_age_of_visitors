@@ -1,10 +1,5 @@
 # Group Pass Calculator Based on Age of Visitors
 
-**Versions Used**:
-- `pytest==8.2.2`
-- `python==3.12.4`
-- `getch==1.0`
-
 ## Exercise: Group Entrance Price Calculation
 
 **Objective:**
@@ -52,18 +47,4 @@ You can use data structures like lists or tuples to store ages and prices as the
 
 ## Aesthetics of the terminal:
 
-"""
-               1         2         3        
-      1234567890123456789012345678901234567
-01    TIPO             PU     Q       TOTAL
-02    =====================================
-03    BEBE (≤2)      0.00    99     9999.99
-04    NINO (≤12)    14.00    99     9999.99
-05    ADULTO (<65)  23.00    99     9999.99
-06    JUBILADO      18.00    99     9999.99
-07    -------------------------------------
-08                          999    99999.99
-09                          
-10    EDAD: 
-11    CONF
-"""
+![Console View](static/images/console_view.png "Console View")
