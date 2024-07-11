@@ -1,5 +1,4 @@
-from models.model import Entrada, TipoEntrada, Grupo_Entrada
-import pytest
+from models.model import Entrada, TipoEntrada
 
 def test_crear_entrada():
     entrada = Entrada(12)
