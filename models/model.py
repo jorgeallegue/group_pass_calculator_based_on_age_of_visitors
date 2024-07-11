@@ -1,10 +1,10 @@
 from enum import Enum
 
 class TipoEntrada(Enum):
-    BEBE = {'P': 0, 'Q': 0}
-    NIÑO = {'P': 14, 'Q': 0}
-    ADULTO = {'P': 23, 'Q': 0}
-    JUBILADO = {'P': 18, 'Q': 0}
+    BEBE = 0
+    NIÑO = 14
+    ADULTO = 23
+    JUBILADO = 18
 
 class Entrada:
     def __init__(self, edad: int):
@@ -28,16 +28,13 @@ class Entrada:
             raise ValueError("La edad no debe ser negativa")
         
 class Grupo_Entrada:
-
     def __init__(self):
         self.total = 0
         self.num_entradas = 0
-        self.tipos_entrada = {
-            TipoEntrada.BEBE: {'P': TipoEntrada.BEBE.value['P'], 'Q': 0},
-            TipoEntrada.NIÑO: {'P': TipoEntrada.NIÑO.value['P'], 'Q': 0},
-            TipoEntrada.ADULTO: {'P': TipoEntrada.ADULTO.value['P'], 'Q': 0},
-            TipoEntrada.JUBILADO: {'P': TipoEntrada.JUBILADO.value['P'], 'Q': 0}
-        }
+        self.tipos_entrada = {}
+        for tipo in TipoEntrada:
+            self.tipos_entrada[tipo] = {"Q": 0, "P": tipo.value}
+        
 
     def add_entrada(self, edad):
         """
@@ -53,7 +50,6 @@ class Grupo_Entrada:
     def cantidad_entradas_por_tipo(self, tipo: TipoEntrada) -> int:
         return self.tipos_entrada[tipo]["Q"]
 
+
     def subtotal_tipo(self, tipo: TipoEntrada) -> int:
         return self.tipos_entrada[tipo]["Q"] * self.tipos_entrada[tipo]["P"]
-    
-    
