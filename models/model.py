@@ -1,27 +1,21 @@
 from enum import Enum
 
 class TipoEntrada(Enum):
-    BEBE = 0
-    NIÑO = 14
-    ADULTO = 23
-    JUBILADO = 18
+    BEBE = (0, 2)
+    NIÑO = (14, 12)
+    ADULTO = (23, 65)
+    JUBILADO = (18, 120)
 
 class Entrada:
     def __init__(self, edad: int):
         self.__validate_edad(edad)
         self.__edad = edad
-        if edad <= 2:
-            self.tipo = TipoEntrada.BEBE
-            self.precio = 0
-        elif edad < 13:
-            self.tipo = TipoEntrada.NIÑO
-            self.precio = 14
-        elif edad < 65:
-            self.tipo = TipoEntrada.ADULTO
-            self.precio = 23
-        else:
-            self.tipo = TipoEntrada.JUBILADO
-            self.precio = 18
+
+        for tipo in TipoEntrada: 
+            if edad <= tipo.value[1]:
+                self.tipo = tipo
+                self.precio = tipo.value[0]
+                break 
 
     def __validate_edad(self, edad):
         if edad < 0:
@@ -33,7 +27,7 @@ class Grupo_Entrada:
         self.num_entradas = 0
         self.tipos_entrada = {}
         for tipo in TipoEntrada:
-            self.tipos_entrada[tipo] = {"Q": 0, "P": tipo.value}
+            self.tipos_entrada[tipo] = {"Q": 0, "P": tipo.value[0]}
         
 
     def add_entrada(self, edad):
