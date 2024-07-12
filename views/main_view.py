@@ -1,32 +1,4 @@
-from models.model import Grupo_Entrada, TipoEntrada
-from simple_screen import locate, Screen_manager, Input
-
-class VistaGrupo:
-
-    def __init__(self, grupo: Grupo_Entrada, x=1, y=1):
-        self.grupo = grupo
-        self.x = x
-        self.y = y
-
-    def paint(self):
-        locate(self.x, self.y, "TIPO             PU     Q       TOTAL")
-        locate(self.x, self.y + 1, "=====================================")
-        for indice, tipo in enumerate(TipoEntrada):
-            locate(self.x, self.y + 3 + indice, f"{tipo.name:.<14s}{tipo.value.precio:5.2f}{self.grupo.cantidad_entradas_por_tipo(tipo):2d}       {self.grupo.subtotal_tipo(tipo):7.2f}")
-
-        locate(self.x, self.y + 7, "-------------------------------------")
-        locate(self.x, self.y + 8, f"                      {self.grupo.num_entradas:3d}    {self.grupo.total:8.2f}")
-
-class VistaEntrada:
-        def __init__(self, etiqueta: str, x, y):
-             self.etiqueta = etiqueta
-             self.y = y
-             self.x = x
-        
-        def paint(self):
-             locate(self.x, self.y, self.etiqueta)
-             value = Input()
-        """
+"""
                1         2         3        
       1234567890123456789012345678901234567
 01    TIPO             PU     Q       TOTAL
@@ -41,3 +13,65 @@ class VistaEntrada:
 10    EDAD: 
 11    CONF
 """
+
+from models.model import Grupo_Entrada, TipoEntrada
+from simple_screen import locate, Screen_manager, Input, cls, DIMENSIONS
+
+class VistaGrupo:
+
+    def __init__(self, grupo: Grupo_Entrada, x=1, y=1):
+        self.grupo = grupo
+        self.x = x
+        self.y = y
+
+    def paint(self):
+        locate(self.x, self.y, "TIPO             PU     Q       TOTAL")
+        locate(self.x, self.y + 1, "=====================================")
+        for indice, tipo in enumerate(TipoEntrada):
+            locate(self.x, self.y + 3 + indice, f"{tipo.name:.<14s}{tipo.value.precio:5.2f}    {self.grupo.cantidad_entradas_por_tipo(tipo):2d}     {self.grupo.subtotal_tipo(tipo):7.2f}")
+
+        locate(self.x, self.y + 7, "-------------------------------------")
+        locate(self.x, self.y + 8, f"                      {self.grupo.num_entradas:3d}    {self.grupo.total:8.2f}")
+
+class VistaEntrada:
+        def __init__(self, etiqueta: str, x, y):
+             self.etiqueta = etiqueta
+             self.y = y
+             self.x = x
+             self.value = ""
+        
+        def paint(self):
+             locate(self.x, self.y, self.etiqueta)
+             return Input()
+
+with Screen_manager:
+    # Instanciamos lo necesario, modelos y componentes graficos
+    grupo_entradas = Grupo_Entrada()
+    x = (DIMENSIONS.w - 37) // 2
+
+    vista_grupo = VistaGrupo(grupo_entradas, x, 1)
+    entrada_edad = VistaEntrada("EDAD: ", x, 10)
+    entrada_seguir = VistaEntrada("Resetear y empezar de nuevo (S/n): ", x, 12)
+    
+    # bucle de pantalla
+    while True:
+        cls()
+        vista_grupo.paint()
+        edad = entrada_edad.paint()
+        if edad == "":
+            respuesta = entrada_seguir.paint()
+            if respuesta == "S":
+                grupo_entradas = Grupo_Entrada()
+                vista_grupo.grupo = grupo_entradas
+                continue
+            else:
+                break
+
+        edad = int(edad)
+        grupo_entradas.add_entrada(edad)
+
+    respuesta = entrada_seguir.paint()
+    if respuesta == "S":
+
+        locate(1, DIMENSIONS. h -2)
+        Input("Pulse enter para salir")
