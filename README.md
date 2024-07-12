@@ -6,7 +6,7 @@
 Develop a program that calculates the total entrance price for a group of visitors to a zoo based on their ages. The program should also provide a detailed breakdown of prices by age group.
 
 **Price Rules:**
-- Children aged 2 years or younger: Free entry.
+- Babies aged 2 years or younger: Free entry.
 - Children aged 3 to 12 years: 14 euros.
 - Adults aged 13 years and older: 23 euros.
 - Seniors (65 years and older): 18 euros.
@@ -37,6 +37,7 @@ You can use data structures like lists or tuples to store ages and prices as the
 4. Enter visitor's age (leave blank to finish):
 5. Total price for the group: 55 euros
 6. Breakdown by ages:
+   - Baby (0-2 years): 1 x 0 euros = 0 euros
    - Children (3-12 years): 1 x 14 euros = 14 euros
    - Adults (13-64 years): 1 x 23 euros = 23 euros
    - Seniors (65+ years): 1 x 18 euros = 18 euros
@@ -45,6 +46,6 @@ You can use data structures like lists or tuples to store ages and prices as the
 - Ensure the program handles invalid inputs correctly and prompts for age re-entry if an incorrect value is entered.
 - The program should be user-friendly and provide clear and accurate results.
 
-## Aesthetics of the terminal:
+## Aesthetics of the Terminal:
 
 ![Console View](static/images/console_view.png "Console View")
