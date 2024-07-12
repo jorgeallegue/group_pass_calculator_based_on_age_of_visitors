@@ -25,7 +25,7 @@ class VistaGrupo:
         self.y = y
 
     def paint(self):
-        locate(self.x, self.y, "TIPO             PU     Q       TOTAL")
+        locate(self.x, self.y, "TYPE          PRICE  QUANTITY   TOTAL")
         locate(self.x, self.y + 1, "=====================================")
         for indice, tipo in enumerate(TipoEntrada):
             locate(self.x, self.y + 3 + indice, f"{tipo.name:.<14s}{tipo.value.precio:5.2f}    {self.grupo.cantidad_entradas_por_tipo(tipo):2d}     {self.grupo.subtotal_tipo(tipo):7.2f}")
@@ -44,34 +44,19 @@ class VistaEntrada:
              locate(self.x, self.y, self.etiqueta)
              return Input()
 
-with Screen_manager:
-    # Instanciamos lo necesario, modelos y componentes graficos
-    grupo_entradas = Grupo_Entrada()
-    x = (DIMENSIONS.w - 37) // 2
+print(__name__)
+if __name__ == "__main__":
+    with Screen_manager:
+        grupo = Grupo_Entrada()
+        grupo.add_entrada(2)
+        grupo.add_entrada(6)
+        grupo.add_entrada(15)
 
-    vista_grupo = VistaGrupo(grupo_entradas, x, 1)
-    entrada_edad = VistaEntrada("EDAD: ", x, 10)
-    entrada_seguir = VistaEntrada("Resetear y empezar de nuevo (S/n): ", x, 12)
-    
-    # bucle de pantalla
-    while True:
-        cls()
-        vista_grupo.paint()
-        edad = entrada_edad.paint()
-        if edad == "":
-            respuesta = entrada_seguir.paint()
-            if respuesta == "S":
-                grupo_entradas = Grupo_Entrada()
-                vista_grupo.grupo = grupo_entradas
-                continue
-            else:
-                break
+        vg = VistaGrupo(grupo)
 
-        edad = int(edad)
-        grupo_entradas.add_entrada(edad)
+        vedad = VistaEntrada("AGE: ", 1, 10)
 
-    respuesta = entrada_seguir.paint()
-    if respuesta == "S":
+        vg.paint()
+        vedad.paint()
 
-        locate(1, DIMENSIONS. h -2)
-        Input("Pulse enter para salir")
+        Input("Clic exit to enter")

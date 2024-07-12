@@ -4,10 +4,10 @@ from collections import namedtuple
 Datos_Entrada = namedtuple("Datos_Entrada", ("precio", "edad_max"))
 
 class TipoEntrada(Enum):
-    BEBE = Datos_Entrada (0, 2)
-    NIÑO = Datos_Entrada (14, 12)
-    ADULTO = Datos_Entrada (23, 65)
-    JUBILADO = Datos_Entrada (18, 120)
+    BABY = Datos_Entrada (0, 2)
+    CHILDREN = Datos_Entrada (15, 12)
+    ADULT = Datos_Entrada (25, 64)
+    SENIOR = Datos_Entrada (20, 99)
 
 class Entrada:
     def __init__(self, edad: int):
@@ -22,7 +22,7 @@ class Entrada:
 
     def __validate_edad(self, edad):
         if edad < 0:
-            raise ValueError("La edad no debe ser negativa")
+            raise ValueError("You cannot introduce a negative age")
         
 class Grupo_Entrada:
     def __init__(self):
@@ -32,7 +32,6 @@ class Grupo_Entrada:
         for tipo in TipoEntrada:
             self.tipos_entrada[tipo] = {"Q": 0, "P": tipo.value[0]}
         
-
     def add_entrada(self, edad):
         """
         En funcion de la edad, crear una entrada y incrementar el contador de entradas

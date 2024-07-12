@@ -3,27 +3,36 @@ from views.main_view import VistaGrupo, VistaEntrada
 from simple_screen import locate, Screen_manager, Input, DIMENSIONS, cls
 
 
-if __name__ == "__main__":
-    with Screen_manager:
-        grupo = Grupo_Entrada()
-        grupo.add_entrada(2)
-        grupo.add_entrada(6)
-        grupo.add_entrada(15)
+with Screen_manager:
+    # Instanciamos lo necesario, modelos y componentes graficos
+    grupo_entradas = Grupo_Entrada()
+    x = (DIMENSIONS.w - 37) // 2
 
-        vg = VistaGrupo(grupo)
-        vg.paint()
+    vista_grupo = VistaGrupo(grupo_entradas, x, 1)
+    entrada_edad = VistaEntrada("AGE: ", x, 10)
+    entrada_seguir = VistaEntrada("Do you want to start again? (Y/N): ", x, 12)
 
-        otrog = Grupo_Entrada()
-        otrog.add_entrada(54)
-        otrog.add_entrada(43)
+    # Bucle de pantalla 
+    while True:
+        cls()
+        vista_grupo.paint()
+        edad = entrada_edad.paint()
+        if edad == "":
+            respuesta = entrada_seguir.paint()
+            if respuesta == "Y":
+                grupo_entradas = Grupo_Entrada()
+                vista_grupo.grupo = grupo_entradas
+                continue
+            else:
+                break
+        
+        edad = int(edad)
+        grupo_entradas.add_entrada(edad)
 
-        vg2 = VistaGrupo(otrog, 42, 1)
-        vg2.paint()
-        vedad = VistaEntrada("EDAD: ", 1, 10)
-
-        vg.paint()
-        vedad.paint()
-        Input("Pulsa Enter para acabar")
+    # Final "controlado" del programa
+    locate(1, DIMENSIONS.h - 2)
+    Input("Clic enter to exit")
+    
 
 
     
