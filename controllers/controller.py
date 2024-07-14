@@ -1,18 +1,18 @@
+# Contains the main control logic, managing the flow of the application.
 from models.model import Grupo_Entrada
 from views.main_view import VistaGrupo, VistaEntrada
 from simple_screen import locate, Screen_manager, Input, DIMENSIONS, cls
 
-def run_app():
-    with Screen_manager:
-        # Instanciamos lo necesario, modelos y componentes graficos
-        grupo_entradas = Grupo_Entrada()
+def run_app(): #  Manages the main loop of the application
+    with Screen_manager: # Uses Screen_manager to handle the terminal display.
+        grupo_entradas = Grupo_Entrada() #Initializes the models (Grupo_Entradas) and views (VistaGrupo, VistaEntrada).
         x = (DIMENSIONS.w - 37) // 2
 
         vista_grupo = VistaGrupo(grupo_entradas, x, 1)
         entrada_edad = VistaEntrada("AGE: ", x, 10)
         entrada_seguir = VistaEntrada("Do you want to start again? (Y/N): ", x, 12)
 
-        # Bucle de pantalla 
+        # Runs a loop to: 1. Display the group view. 2. Get user input for age and whether to restart. 3. Update the group of entrance tickets based on user input. 4. Handle restarting or exiting the application based on user input.
         while True:
             cls()
             vista_grupo.paint()
