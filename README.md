@@ -48,4 +48,4 @@ You can use data structures like lists or tuples to store ages and prices as the
 
 ## Aesthetics of the Terminal:
 
-![Console View](static/images/console_view.png "Console View")
+![Console View](static/images/console_view2.png "Console View")
