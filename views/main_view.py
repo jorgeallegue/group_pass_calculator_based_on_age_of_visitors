@@ -1,19 +1,3 @@
-"""
-               1         2         3        
-      1234567890123456789012345678901234567
-01    TIPO             PU     Q       TOTAL
-02    =====================================
-03    BEBE (≤2)      0.00    99     9999.99
-04    NINO (≤12)    14.00    99     9999.99
-05    ADULTO (<65)  23.00    99     9999.99
-06    JUBILADO      18.00    99     9999.99
-07    -------------------------------------
-08                          999    99999.99
-09                          
-10    EDAD: 
-11    CONF
-"""
-
 from models.model import Grupo_Entrada, TipoEntrada
 from simple_screen import locate, Screen_manager, Input, cls, DIMENSIONS
 
