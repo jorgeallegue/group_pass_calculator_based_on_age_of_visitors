@@ -9,7 +9,7 @@ class VistaGrupo:
         self.y = y
 
     def paint(self):
-        locate(self.x, self.y, "TYPE          PRICE  QUANTITY   TOTAL")
+        locate(self.x, self.y, "PASS TYPE     PRICE  QUANTITY   TOTAL")
         locate(self.x, self.y + 1, "=====================================")
         for indice, tipo in enumerate(TipoEntrada):
             locate(self.x, self.y + 3 + indice, f"{tipo.name:.<14s}{tipo.value.precio:5.2f}    {self.grupo.cantidad_entradas_por_tipo(tipo):2d}     {self.grupo.subtotal_tipo(tipo):7.2f}")
