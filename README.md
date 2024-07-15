@@ -68,19 +68,19 @@ The user must hit any character in order to go back to the console. No other alt
 
 ![Console View 2](static/images/console_view2.png "Console View 2")
 
-If the intention of the user was to start a new age group, the user must hit "Y" and "enter"
+If the intention of the user was to start a new age group, the user must hit "Y" and "enter". At this point an additional option is offered to the user: if "enter" was hit by mistake, the software allows to hit any character to go back and add additional ages to the group.
 
-(If "enter" was hit by mistake by user, the software allows user to hit any character to go back and add additional ages to the group.)
+However, if the original intention of the user was to start a new age group, the user must clic "Y" & "enter".
 
 ![Console View 3](static/images/console_view3.png "Console View 3")
 
-If the intention of the user was to start a new age group, the user must clic "Y" and "enter" again.
+At this stage, the user must hit "Y" & "enter" again to start with a new group and to clean the console:
 
 ![Console View 4](static/images/console_view4.png "Console View 4")
 
 ## Execution Example: exit program
 
-If the intention of the user is to exit the program, the user must hit any character or "enter" when found in this step:
+If the intention of the user is to exit the program, the user must hit any character & "enter" or hit "enter" when found in this step:
 
 ![Console View 3](static/images/console_view3.png "Console View 3")
 
