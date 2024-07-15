@@ -79,7 +79,7 @@ At this stage, the user must hit "Y" & "enter" again to start with a new group a
 
 ## Execution Example: exit program
 
-If the intention of the user is to exit the program, the user must hit any character & "enter" or hit "enter" when found in this stage:
+- If the intention of the user is to exit the program, the user must hit any character & "enter" or hit "enter" when found in this stage:
 
 ![Console View 3](static/images/console_view3.png "Console View 3")
 
