@@ -40,7 +40,7 @@ Data structures like lists or tuples can be used to store ages and prices as the
 
 ![Console View 0](static/images/console_view0.png "Console View 0")
 
-If the users keeps introducing ages, the program keeps adding values.
+- If the users keeps introducing ages, the program keeps adding values.
 
 ## Execution Example: age introduced out of range (0-100)
 
@@ -51,11 +51,11 @@ If the users keeps introducing ages, the program keeps adding values.
 5. Enter visitor's age: 70 & "enter"
 6. Enter visitor's age: -1 & "enter"
 
-If user hits any character other than the numbers from 1 - 100 the program assumes the character introduced was a human error and the following message shows up
+- If user hits any character other than the numbers from 1 - 100 the program assumes the character introduced was a human error and the following message shows up:
 
 ![Console View 1](static/images/console_view1.png "Console View 1")
 
-The user must hit any character in order to go back to the console. No other alternative is provided to the user.
+- The user must hit any character and "enter" in order to go back to the console. No other alternative is provided to the user.
 
 ## Execution Example: exit group in order to start a new age group
 
@@ -68,19 +68,18 @@ The user must hit any character in order to go back to the console. No other alt
 
 ![Console View 2](static/images/console_view2.png "Console View 2")
 
-If the intention of the user was to start a new age group, the user must hit "Y" and "enter". At this point an additional option is offered to the user: if "enter" was hit by mistake, the software allows to hit any character to go back and add additional ages to the group.
-
-However, if the original intention of the user was to start a new age group, the user must clic "Y" & "enter".
+- If "enter" was hit by mistake, the software allows to hit any character to go back and add additional ages to the group. 
+- If the intention of the user was indeed to start a new age group, the user must hit "Y" and "enter". 
 
 ![Console View 3](static/images/console_view3.png "Console View 3")
 
-At this stage, the user must hit "Y" & "enter" again to start with a new group and to clean the console:
+At this stage, the user must hit "Y" & "enter" again to start with a new group as intended and to clean the console:
 
 ![Console View 4](static/images/console_view4.png "Console View 4")
 
 ## Execution Example: exit program
 
-If the intention of the user is to exit the program, the user must hit any character & "enter" or hit "enter" when found in this step:
+If the intention of the user is to exit the program, the user must hit any character & "enter" or hit "enter" when found in this stage:
 
 ![Console View 3](static/images/console_view3.png "Console View 3")
 
